@@ -6,8 +6,6 @@ on:
 jobs: 
   echo_the_date:
     runs-on: ubuntu-latest
-    env:
-      OPENWEATHERMAP_KEY: ${{secrets.openweathermap_api}}
     steps: 
     - name: echo the date
       run: echo "The current time and date is $(date)"
@@ -16,6 +14,8 @@ jobs:
 
   test_and_deploy:
     runs-on: ubuntu-latest
+    env:
+      OPENWEATHERMAP_KEY: ${{secrets.openweathermap_api}}
     steps:
     # https://github.com/marketplace/actions/setup-java-jdk
     - name: Setup JDK 17
