@@ -36,3 +36,12 @@ jobs:
 
     - name: Run test
       run: mvn clean test
+
+    # https://github.com/marketplace/actions/deploy-to-heroku
+    - name: Deploy to Heroku
+      uses: akhileshns/heroku-deploy@v3.12.12
+      with:
+        heroku_api_key: ${{secrets.heroku_key}}
+        heroku_app_name: ${{secrets.email}}
+        heroku_email: ${{secrets.heroku_app_name}}
+        branch: ${{github.ref_name}}
